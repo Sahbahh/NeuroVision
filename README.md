@@ -1,12 +1,12 @@
-# SFU CMPT 340 Project Template -- Replace with project title
+# Regional Brain Tumor Detection Web App
 This repository is a template for your CMPT 340 course project.
 Replace the title with your project title, and **add a snappy acronym that people remember (mnemonic)**.
 
-Add a 1-2 line summary of your project here.
+The aim of this project is to develop a web application designed to detect brain tumors from MRI scans. Initially, we will focus on binary classification, distinguishing between the presence and absence of tumors. However, our long-term goal is to extend the application's capabilities to identify various types of brain tumors. To achieve this, we will leverage a Regional Convolutional Neural Network (RCNN) to pinpoint the precise areas in the brain that may contain tumors.
 
 ## Important Links
 
-| [Timesheet](https://google.com) | [Slack channel](https://google.com) | [Project report](https://google.com) |
+| [Timesheet]([https://google.com](https://1sfu-my.sharepoint.com/:x:/g/personal/kabhishe_sfu_ca/EcNAA8NJfzRDnB-AxA825DMBYtabUOEfKJfYbYzss5520A?e=Q8iGna)) | [Slack channel]([https://google.com](https://app.slack.com/client/T05JYJAF22G/C05KKS0AZ6U)) | [Project report]([https://google.com](https://www.overleaf.com/6332469233sfmrvghkymkp)) |
 |-----------|---------------|-------------------------|
 
 
