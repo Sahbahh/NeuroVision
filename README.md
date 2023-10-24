@@ -6,7 +6,7 @@ The aim of this project is to develop a web application designed to detect brain
 
 ## Important Links
 
-| [Timesheet]([https://google.com](https://1sfu-my.sharepoint.com/:x:/g/personal/kabhishe_sfu_ca/EcNAA8NJfzRDnB-AxA825DMBYtabUOEfKJfYbYzss5520A?e=Q8iGna)) | [Slack channel]([https://google.com](https://app.slack.com/client/T05JYJAF22G/C05KKS0AZ6U)) | [Project report]([https://google.com](https://www.overleaf.com/6332469233sfmrvghkymkp)) |
+| [Timesheet](https://1sfu-my.sharepoint.com/:x:/g/personal/kabhishe_sfu_ca/EcNAA8NJfzRDnB-AxA825DMBYtabUOEfKJfYbYzss5520A?e=Q8iGna) | [Slack channel](https://app.slack.com/client/T05JYJAF22G/C05TGQLK6KE/docs/Qp:F05T7QB82GN) | [Project report](https://www.overleaf.com/6332469233sfmrvghkymkp) |
 |-----------|---------------|-------------------------|
 
 
