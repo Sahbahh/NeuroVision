@@ -1,0 +1,30 @@
+
+main {
+  padding: 120px 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 980px;
+}
+
+#uploader {
+  height: 120px;
+  margin: 0;
+  background-color: #F2F5F7;
+  opacity: 0.8;
+}
+
+footer {
+  padding: 64px;
+  background-color: #D9D9D9;
+}
+
+footer > div {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 980px;
+  text-align: right;
+}
+
+footer p {
+  margin: 0;
+}

@@ -1,0 +1,10 @@
+body {
+  background-image: url("./bg.png");
+  background-position: 100% 0%;
+  background-repeat: no-repeat;
+  background-size: 100vh;
+  margin: 0;
+}
+img {
+  width: 100%;
+}
