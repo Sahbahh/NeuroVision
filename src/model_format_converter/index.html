@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="imageInput" accept=".png">
+    <button onclick="loadAndInfer()">Load and Infer</button>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script>
+    <script>
+        async function loadAndInfer() {
+            const sess = new onnx.InferenceSession();
+            await sess.loadModel('./saved_models/brain_tumor_segmentation_model_v3.onnx');
+
+            // Get the selected file from the input element
+            const fileInput = document.getElementById('imageInput');
+            const selectedFile = fileInput.files[0];
+
+            if (selectedFile) {
+                // Create a FileReader to read the selected image file
+                const reader = new FileReader();
+                reader.onload = async function () {
+                    // Read the image data as a typed array
+                    const imageData = new Uint8Array(reader.result);
+
+                    // Create an input tensor with the image data
+                    const inputTensor = new onnx.Tensor(imageData, 'uint8', [1, 1, 512, 512]);
+
+                    // Perform inference
+                    const outputMap = await sess.run([inputTensor]);
+                    const outputTensor = outputMap.values().next().value;
+                    console.log(`Output tensor: ${outputTensor.data}`);
+                };
+
+                // Read the selected file as an array buffer
+                reader.readAsArrayBuffer(selectedFile);
+            }
+        }
+    </script>
+</body>
+</html>
