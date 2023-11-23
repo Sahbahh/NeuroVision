@@ -1,0 +1,14 @@
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+
+/* icons */
+
+
+:root {
+    --primary: #215096;
+    --secondary: #3F5462;
+    --dark-gray: #727272;
+    --light-gray: #D9D9D9;
+    --default-font-size: 16px;
+    --desktop-width: 870px;
+}
