@@ -1,0 +1,60 @@
+#uploader {
+    margin: 0;
+    background-color: rgba(242, 245, 247, .8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px dashed rgba(159, 177, 189, .75);
+    border-radius: 2px;
+    padding: 32px;
+    color: var(--secondary);
+}
+
+#uploader > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#uploader > div:first-child p {
+    font-weight: 500;
+    margin: 0;
+}
+#uploadIcon {
+    width: 78px;
+    opacity: .3;
+}
+
+
+#uploader > div#divider {
+    max-width: 100%;
+    width: 280px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+  
+#uploader > div#divider .line {
+    flex-grow: 1;
+    background: #9FB1BD;
+    height: 1px;
+    position: relative;
+}
+#uploader > div#divider .text {
+    padding: 0 10px;
+    font-size: 12px;
+    position: relative;
+    z-index: 1;
+    color: #9FB1BD;
+}
+  
+
+#uploadButton {
+    padding: 10px 24px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 500;;
+    color: var(--secondary);
+    background-color: var(--light-gray);
+}
