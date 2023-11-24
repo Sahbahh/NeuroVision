@@ -10,12 +10,7 @@
     color: var(--secondary);
     position: relative;
 }
-#uploader:hover {
-    background-color: rgba(242, 245, 247, 1);
-}
-#uploader.focus {
-    background-color: rgba(242, 245, 247, 1);
-}
+
 
 #uploader > div:first-child {
     display: flex;

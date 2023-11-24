@@ -9,6 +9,23 @@ main {
 section {
   margin-bottom: 64px;
 }
+#analysisControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+#analyzeBtn {
+  border: none;
+  background-color: #215096ca;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px 24px;
+}
+
+#analyzeBtn:enabled:hover {
+  background-color: #215096;
+  cursor: pointer;
+}
 
 
 footer {

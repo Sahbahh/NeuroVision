@@ -1,21 +1,11 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./FileUploader.css";
 
 // assets
 import UploadIcon from "../assets/upload-icon.png";
 
 function FileUploader({fileList, updateFiles}) {
-    const wrapperRef = useRef(null)
 
-    const onDragEnter = () => {
-        wrapperRef.current.classList.add('focus')
-    }
-    const onDragLeave = () => {
-        wrapperRef.current.classList.remove('focus')
-    }
-    const onDrop = () => {
-        wrapperRef.current.classList.remove('focus')
-    }
     const handleFileUpload = (e) => {
         if(e.target.files.length > 0) {
             updateFiles([...fileList, e.target.files[0]])
@@ -25,7 +15,7 @@ function FileUploader({fileList, updateFiles}) {
     return (
         <section>
           <h2>File Upload</h2>
-          <figure id="uploader" ref={wrapperRef} onDragEnter={onDragEnter} onDragLeave={onDragLeave} onDrop={onDrop}>
+          <figure id="uploader">
             <div>
                 <img id="uploadIcon" src={UploadIcon} alt="upload-icon" />
                 <p>Drag and drop files here</p>

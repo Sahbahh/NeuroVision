@@ -12,15 +12,23 @@ import footerIcon from "./assets/footer-icon.png";
 
 function App() {
   const [files, setFiles] = useState([])
+  const [output, setOutput] = useState(null)
+  const [analyzeBtnEnabled, setanalyzeBtnEnabled] = useState(false)
 
   useEffect(() => {
-    // console.log(files)// debug
+    setanalyzeBtnEnabled(files.length === 0)
   }, [files])
 
   const removeFile = (index) => {
     const copiedList = files
     copiedList.splice(index, 1)
     setFiles([...copiedList])
+  }
+
+  const runModel = () => {
+    alert("Running model: currently displaying dummy result. Output has to be replaced with the actual output from the model.")
+    console.log("running model")
+    setOutput({})
   }
 
 
@@ -30,7 +38,10 @@ function App() {
         <Introduction />
         <FileUploader fileList={files} updateFiles={setFiles} />
         <FilePreviewer fileList={files} removeFile={removeFile} />
-        <AnalysisDisplayer />
+        <section id="analysisControls">
+          <button id="analyzeBtn" disabled={analyzeBtnEnabled} onClick={runModel}>Analyze</button>
+        </section>
+        {output && <AnalysisDisplayer />}
       </main>
       <footer>
         <div className="wrapper">
