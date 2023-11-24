@@ -1,0 +1,44 @@
+#fileListPreview {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: rgba(242, 245, 247, 1);
+    border-radius: 4px;
+}
+.list-item p {
+    margin: 0;
+}
+img.preview {
+    width: 200px;
+}
+
+.list-item > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+}
+
+.control-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.control-buttons button {
+    border: none;
+    background-color: transparent;
+}
+
+.control-buttons img {
+    width: 24px;
+}
+.control-buttons img:hover {
+    cursor: pointer;
+}
