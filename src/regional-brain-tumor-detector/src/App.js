@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
-// import * as onnx from "onnxruntime-web";
 import { InferenceSession, Tensor } from "onnxruntime-web";
 
 // components
@@ -11,6 +10,9 @@ import FilePreviewer from "./components/FilePreviewer";
 
 // assets
 import footerIcon from "./assets/footer-icon.png";
+
+// utils
+import InputBuilder from "./utils/InputBuilder";
 
 function App() {
   const [files, setFiles] = useState([])
@@ -62,6 +64,9 @@ function App() {
       return
     }
 
+    let inputBuilder = new InputBuilder()
+
+
     alert("Warning!\nCurrently running ResNet50 from microsoft. Output has to be replaced with the actual output from our model.\nUpload 'sample-input-224x224.png' in regional-brain-tumor-detector/assets/ or any image file with dimension of 224x224 to test out this feature.")
 
     try {
@@ -71,35 +76,7 @@ function App() {
         const image = new Image()
         image.src = reader.result
         image.onload = async () => {
-
-          const EXPECTED_WIDTH = 224;
-          const EXPECTED_HEIGHT = 224;
-          const width = image.width
-          const height = image.height
-
-          if(!(width === EXPECTED_WIDTH && height === EXPECTED_HEIGHT)) {
-            alert("ERR: dimension of image has to be 324 x 324")
-            return
-          }
-
-          const channels = 3; // RGB image
-          const canvas = document.createElement("canvas")
-          canvas.width = width
-          canvas.height = height
-          const context = canvas.getContext("2d")
-          context.drawImage(image, 0, 0, width, height)
-          const imageData = context.getImageData(0, 0, width, height)
-
-          const inputArray = new Float32Array(width * height * channels)
-          for (let i = 0; i < width * height * channels; i++) {
-            inputArray[i] = imageData.data[i] / 255.0;
-          }
-          
-          const inputDimensions = [1, channels, EXPECTED_WIDTH, EXPECTED_HEIGHT];
-          const inputTensor = new Tensor("float32", inputArray, inputDimensions);
-
-          const feeds = { data: inputTensor };
-          setOutput(await session.run(feeds))
+          setOutput(await session.run(inputBuilder.buildFromImage(image)))
         }
       }
       
@@ -108,7 +85,6 @@ function App() {
       console.log(error)
       alert(error)
     }
-    // setOutput({})
   }
 
 
