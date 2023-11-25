@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import './App.css';
-import { InferenceSession, Tensor } from "onnxruntime-web";
 
 // components
 import Introduction from './components/Introduction';
@@ -8,29 +6,27 @@ import FileUploader from "./components/FileUploader";
 import AnalysisDisplayer from './components/AnalysisDisplayer';
 import FilePreviewer from "./components/FilePreviewer";
 
+// styles
+import './App.css';
+
 // assets
 import footerIcon from "./assets/footer-icon.png";
 
 // utils
-import InputBuilder from "./utils/InputBuilder";
+import Model from "./utils/ModelWrapper";
+
 
 function App() {
   const [files, setFiles] = useState([])
   const [output, setOutput] = useState(null)
   const [ready, setReady] = useState(false)
-  const [session, setSession] = useState(null)
+  const model = new Model()
 
   useEffect(() => {
     async function loadModel() {
-      setSession(await InferenceSession.create(
-        'https://microsoft.github.io/onnxjs-demo/resnet50v2.onnx',// replace with our model
-        {
-          executionProviders: ["webgl"],
-        }
-      ))
+      await model.load()
     }
     loadModel()
-
   }, [])
 
   useEffect(() => {
@@ -39,9 +35,10 @@ function App() {
   useEffect(() => {
     if(output !== null && output !== undefined) {
       console.log("output:")
-      console.log(output)
-      // const prediction = output.resnetv24_dense0_fwd.data
-      // console.log(prediction.indexOf(Math.max(...prediction)))
+      console.log(output[96])
+
+      const canvas = document.getElementById("output")
+      model.displayOutput(output[96], canvas)
     }
   }, [output])
 
@@ -54,7 +51,7 @@ function App() {
 
 
   const runModel = async () => {
-    if(session === null) {
+    if(!model.ready()) {
       alert("Machine learning model has not been loaded yet. Please try again.")
       return
     }
@@ -64,10 +61,6 @@ function App() {
       return
     }
 
-    let inputBuilder = new InputBuilder()
-
-
-    alert("Warning!\nCurrently running ResNet50 from microsoft. Output has to be replaced with the actual output from our model.\nUpload 'sample-input-224x224.png' in regional-brain-tumor-detector/assets/ or any image file with dimension of 224x224 to test out this feature.")
 
     try {
       const reader = new FileReader()
@@ -76,7 +69,7 @@ function App() {
         const image = new Image()
         image.src = reader.result
         image.onload = async () => {
-          setOutput(await session.run(inputBuilder.buildFromImage(image)))
+          setOutput(await model.run(image))
         }
       }
       
