@@ -9,6 +9,7 @@ export default function AnalysisDisplayer() {
         <section>
           <h2>Analysis</h2>
           <img src={sampleResultImg} />
+          <canvas id="output"></canvas>
         </section>
     )
 }
