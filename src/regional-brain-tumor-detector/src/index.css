@@ -1,0 +1,48 @@
+body {
+  background-image: url("./assets/bg.png");
+  background-position: 100% 0%;
+  background-repeat: no-repeat;
+  background-size: 100vh;
+  margin: 0;
+  font-size: var(--default-font-size);
+  font-family: 'Inter', sans-serif;
+}
+img {
+  width: 100%;
+}
+h1, h2, h3, h4, h5 {
+  color: var(--primary);
+}
+
+.light {
+  opacity: .75;
+}
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+  opacity: .75;
+}
+h3, h4, h5, h6 {
+  color: #000;
+  font-size: var(--default-font-size);
+  font-weight: 500;
+}
+
+
+.lg {
+  font-size: 32px;
+}
+.md {
+  font-size: 24px;
+}
+.sm {
+  font-size: 20px;
+}
+
+::selection {
+  background-color: #CEE8E5;
+}
