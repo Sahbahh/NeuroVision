@@ -8,7 +8,21 @@ import matplotlib.pyplot as plt
 import io
 import base64
 
+
+print(tf.config.list_physical_devices('GPU'))
 app = Flask(__name__)  # Corrected here
+
+
+# TEST FOR SIMPLE FLASK SERVER =============================
+# @app.route("/hello", methods=["GET"])
+# def say_hello():
+#     return jsonify({"msg": "Hello from Flask Server"})
+
+
+# if __name__ == "__main__":
+#     # do not set debug=True in production
+#     app.run(host="0.0.0.0", port=5000, debug=True)
+# ==========================================================
 
 custom_objects = {'dice_coef': dice_coef}
 
@@ -97,4 +111,4 @@ def postprocess_and_visualize_prediction(predictions, target_dim=(128, 128)):
     return encoded_images
 
 if __name__ == '__main__':  # Corrected here
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
