@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import tensorflow as tf
 from custom_metrics import dice_coef
 import numpy as np
@@ -11,42 +12,45 @@ import base64
 
 print(tf.config.list_physical_devices('GPU'))
 app = Flask(__name__)  # Corrected here
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-
-# TEST FOR SIMPLE FLASK SERVER =============================
-# @app.route("/hello", methods=["GET"])
-# def say_hello():
-#     return jsonify({"msg": "Hello from Flask Server"})
-
-
-# if __name__ == "__main__":
-#     # do not set debug=True in production
-#     app.run(host="0.0.0.0", port=5000, debug=True)
-# ==========================================================
 
 custom_objects = {'dice_coef': dice_coef}
 
-model = tf.keras.models.load_model('project_16/src/neural network/sample_model.h5', custom_objects=custom_objects)
+model = tf.keras.models.load_model('../neural network/sample_model.h5', custom_objects=custom_objects)
+# model = tf.keras.models.load_model('project_16/src/neural network/sample_model.h5', custom_objects=custom_objects)
 
-@app.route('/predict', methods=['POST'])
+@app.route("/api/welcome", methods=["GET"])
+def welcome():
+    response = jsonify({"Flask Server": "Display top page"})
+    return response
+
+
+@app.route('/api/predict', methods=['POST'])
 def predict():
+    if 'file' not in request.files:
+        return jsonify({'result': "no file"}), 400
+
+    file = request.files['file']
     # Assuming the request will have paths to flair and t1ce images
-    flair_path = request.form.get('flair_path')
-    t1ce_path = request.form.get('t1ce_path')
 
-    if not flair_path or not t1ce_path:
-        return jsonify({'error': 'Missing file paths for FLAIR and/or T1ce images'}), 400
+    # flair_path = request.form.get('flair_path')
+    # t1ce_path = request.form.get('t1ce_path')
 
-    # Preprocess the images
-    processed_images = preprocess_image(flair_path, t1ce_path)
+    # if not flair_path or not t1ce_path:
+    #     return jsonify({'error': 'Missing file paths for FLAIR and/or T1ce images'}), 400
 
-    # Perform prediction
-    predictions = model.predict(processed_images)
+    # # Preprocess the images
+    # processed_images = preprocess_image(flair_path, t1ce_path)
 
-    # Postprocess the prediction
-    output = postprocess_and_visualize_prediction(predictions)
+    # # Perform prediction
+    # predictions = model.predict(processed_images)
 
-    return jsonify({'result': output})
+    # # Postprocess the prediction
+    # output = postprocess_and_visualize_prediction(predictions)
+
+    # return jsonify({'result': output})
+    return jsonify({'result': "received file"})
 
 def preprocess_image(flair_path, t1ce_path, target_dim=(128, 128), volume_slices=155, start_slice=0):
     # Load NIfTI files

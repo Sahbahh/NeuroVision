@@ -1,6 +1,7 @@
-Flask==3.0.0
-tensorflow==2.14.0
-numpy==1.26.1
-matplotlib==3.8.1
-opencv-python==4.8.1.78
-nibabel==5.1.0
+Flask
+tensorflow
+numpy
+matplotlib
+opencv-python
+nibabel
+flask-cors

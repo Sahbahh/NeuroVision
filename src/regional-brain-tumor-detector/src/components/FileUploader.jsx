@@ -28,7 +28,7 @@ function FileUploader({fileList, updateFiles}) {
             <div>
                 <p>Click to browse files</p>
             </div>
-            <input type="file" title="" accept="image/*" onChange={handleFileUpload} />
+            <input type="file" title="" accept=".nii" onChange={handleFileUpload} />
           </figure>
         </section>
     )
