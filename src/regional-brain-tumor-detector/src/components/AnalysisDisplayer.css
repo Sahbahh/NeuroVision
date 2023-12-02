@@ -3,3 +3,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+@media screen and (max-width: 900px) {
+    #output {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    #output {
+        grid-template-columns: 1fr 1fr;
+    }
+}
