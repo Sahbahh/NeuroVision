@@ -7,18 +7,19 @@ import cv2
 import nibabel as nib
 import matplotlib.pyplot as plt
 import io
+import os
 import base64
 
 
-print(tf.config.list_physical_devices('GPU'))
+# print(tf.config.list_physical_devices('GPU'))
 app = Flask(__name__)  # Corrected here
+app.config['UPLOAD_PATH'] = 'uploads'
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 custom_objects = {'dice_coef': dice_coef}
 
 model = tf.keras.models.load_model('../neural network/sample_model.h5', custom_objects=custom_objects)
-# model = tf.keras.models.load_model('project_16/src/neural network/sample_model.h5', custom_objects=custom_objects)
 
 @app.route("/api/welcome", methods=["GET"])
 def welcome():
@@ -28,34 +29,37 @@ def welcome():
 
 @app.route('/api/predict', methods=['POST'])
 def predict():
-    if 'file' not in request.files:
-        return jsonify({'result': "no file"}), 400
+    if 'flair' not in request.files or 't1ce' not in request.files:
+        return jsonify({'result': "Missing files Flair, T1ce or both."}), 400
 
-    file = request.files['file']
     # Assuming the request will have paths to flair and t1ce images
+    flair = request.files['flair']
+    t1ce = request.files['t1ce']
 
-    # flair_path = request.form.get('flair_path')
-    # t1ce_path = request.form.get('t1ce_path')
+    flair_path = os.path.join(app.config['UPLOAD_PATH'], flair.filename)
+    t1ce_path = os.path.join(app.config['UPLOAD_PATH'], t1ce.filename)
 
-    # if not flair_path or not t1ce_path:
-    #     return jsonify({'error': 'Missing file paths for FLAIR and/or T1ce images'}), 400
+    flair.save(flair_path)
+    t1ce.save(t1ce_path)
 
-    # # Preprocess the images
-    # processed_images = preprocess_image(flair_path, t1ce_path)
+
+    # Preprocess the images
+    processed_images = preprocess_image(flair_path, t1ce_path)
+    
 
     # # Perform prediction
-    # predictions = model.predict(processed_images)
+    predictions = model.predict(processed_images)
 
     # # Postprocess the prediction
-    # output = postprocess_and_visualize_prediction(predictions)
+    output = postprocess_and_visualize_prediction(predictions)
 
-    # return jsonify({'result': output})
-    return jsonify({'result': "received file"})
+    return jsonify({'result': output})
 
 def preprocess_image(flair_path, t1ce_path, target_dim=(128, 128), volume_slices=155, start_slice=0):
     # Load NIfTI files
     flair = nib.load(flair_path).get_fdata()
     t1ce = nib.load(t1ce_path).get_fdata()
+
 
     # Initialize the array to hold the preprocessed slices
     preprocessed_slices = np.zeros((volume_slices, *target_dim, 2), dtype=np.float32)

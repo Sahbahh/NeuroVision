@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Introduction from './components/Introduction';
 import FileUploader from "./components/FileUploader";
 import AnalysisDisplayer from './components/AnalysisDisplayer';
-import FilePreviewer from "./components/FilePreviewer";
 
 // styles
 import './App.css';
@@ -15,51 +14,42 @@ import footerIcon from "./assets/footer-icon.png";
 
 
 function App() {
-  const [files, setFiles] = useState([])
+  const [flair, setFileFlair] = useState(null)
+  const [t1ce, setFileT1ce] = useState(null)
+
   const [output, setOutput] = useState(null)
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    setReady(files.length > 0)
-  }, [files])
-
-
-  useEffect(() => {
-    if(output !== null && output !== undefined) {
-      console.log("output:")
-      console.log(output)
-    }
-  }, [output])
-
-
-  const removeFile = (index) => {
-    const copiedList = files
-    copiedList.splice(index, 1)
-    setFiles([...copiedList])
-  }
+    setReady(flair !== null && t1ce !== null)
+  }, [flair, t1ce])
 
 
 
   const getResult = async () => {
-    console.log("Requesting output from Flask server.")
-
     const data = new FormData()
-    data.append('file', files[0]) // TODO: iterate over all files uploaded
+    data.append('flair', flair)
+    data.append('t1ce', t1ce)
 
     const options = {
         method: 'POST',
         body: data
     }
 
-    const response = await fetch('http://localhost:5000/api/predict', options)
-    const result = await response.json()
+    try {
+      const response = await fetch('http://localhost:5000/api/predict', options)
+      const result = await response.json()
 
-    if(response.status !== 200) {
-      alert(result)
-      return
+      if(response.status !== 200) {
+        alert(result)
+        return
+      }
+
+      setOutput(result['result'])
+      // console.log(result)
+    }catch(err) {
+      alert(err)
     }
-
-    console.log(result)
   }
 
 
@@ -67,12 +57,11 @@ function App() {
     <div className="App">
       <main>
         <Introduction />
-        <FileUploader fileList={files} updateFiles={setFiles} />
-        <FilePreviewer fileList={files} removeFile={removeFile} />
+        <FileUploader flair={flair} t1ce={t1ce} setFileFlair={setFileFlair} setFileT1ce={setFileT1ce} />
         <section id="analysisControls">
           <button id="analyzeBtn" disabled={!ready} onClick={getResult}>Analyze</button>
         </section>
-        {output && <AnalysisDisplayer />}
+        {output && <AnalysisDisplayer output={output} />}
       </main>
       <footer>
         <div className="wrapper">
