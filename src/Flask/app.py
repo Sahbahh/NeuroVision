@@ -41,6 +41,10 @@ def predict():
 
     flair.save(flair_path)
     t1ce.save(t1ce_path)
+    
+    # Load the NIfTI files as Numpy arrays
+    flair_volume = nib.load(flair_path).get_fdata()
+    t1ce_volume = nib.load(t1ce_path).get_fdata()
 
 
     # Preprocess the images
@@ -51,7 +55,7 @@ def predict():
     predictions = model.predict(processed_images)
 
     # # Postprocess the prediction
-    output = postprocess_and_visualize_prediction(predictions)
+    output = postprocess_and_visualize_prediction(predictions, flair_volume, t1ce_volume)
 
     return jsonify({'result': output})
 
@@ -59,7 +63,6 @@ def preprocess_image(flair_path, t1ce_path, target_dim=(128, 128), volume_slices
     # Load NIfTI files
     flair = nib.load(flair_path).get_fdata()
     t1ce = nib.load(t1ce_path).get_fdata()
-
 
     # Initialize the array to hold the preprocessed slices
     preprocessed_slices = np.zeros((volume_slices, *target_dim, 2), dtype=np.float32)
@@ -81,30 +84,38 @@ def preprocess_image(flair_path, t1ce_path, target_dim=(128, 128), volume_slices
 
     return preprocessed_slices
 
-def postprocess_and_visualize_prediction(predictions, target_dim=(128, 128)):
+def postprocess_and_visualize_prediction(predictions, flair_volume, t1ce_volume, num_slices_to_show=10):
     """
-    Postprocess and visualize the predictions for all slices.
+    Postprocess and visualize selected slices with predicted masks.
 
     Args:
     predictions (numpy.ndarray): The output from the model for all slices.
-    target_dim: Target dimension for resizing.
+    flair_volume (numpy.ndarray): The FLAIR volume data.
+    t1ce_volume (numpy.ndarray): The T1ce volume data.
+    num_slices_to_show (int): Number of slices to visualize.
 
     Returns:
     list: A list of base64 encoded images.
     """
-
-    num_slices = predictions.shape[0]
     encoded_images = []
 
-    for slice_index in range(num_slices):
+    # Select slices to visualize
+    slice_indices = np.linspace(0, predictions.shape[0] - 1, num_slices_to_show, dtype=int)
+
+    for slice_index in slice_indices:
         # Predicted mask for the current slice
         predicted_mask = np.argmax(predictions[slice_index], axis=-1).squeeze()
 
-        # Set up the plot for the predicted mask
+        # Resize slices for visualization
+        flair_slice = cv2.resize(flair_volume[:, :, slice_index], (128, 128))
+        t1ce_slice = cv2.resize(t1ce_volume[:, :, slice_index], (128, 128))
+
+        # Set up the plot
         fig, ax = plt.subplots(figsize=(5, 5))
-        ax.imshow(predicted_mask, cmap='gray')
-        ax.set_title(f'Predicted Mask Slice {slice_index}')
+        ax.imshow(flair_slice, cmap='gray')
+        ax.imshow(predicted_mask, cmap='jet', alpha=0.5)  # Overlay mask
         ax.axis('off')
+        ax.set_title(f'Slice {slice_index}')
 
         # Save and encode the plot
         buf = io.BytesIO()
