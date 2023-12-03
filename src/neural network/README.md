@@ -50,9 +50,10 @@ Steps to run the notebook:
 8) Run the code under "Initialize MRI Data Generators"
 9) Run the code under "Loss function"
 10) Run the lines of code provided bellow
-# Define your custom objects in a dictionary
+
+Define your custom objects in a dictionary
 custom_objects = {'dice_coef': dice_coef}
 
-# Load the model with custom objects
+Load the model with custom objects
 model = load_model('/content/sample_model.h5', custom_objects=custom_objects)
 11) Now you can visualize the data on the test sets.
