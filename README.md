@@ -47,7 +47,10 @@ Explain briefly what files are found where
 
 ```bash
 repository
-├── src                          ## source code of the package itself
+├── src                                 ## source code of the package itself
+|   ├── Flask                           ## Flask backend
+|   ├── neural network                  ## Scripts for developing the model
+|   ├── regional-brain-tumor-detector   ## React frontend
 ├── scripts                      ## scripts, if needed
 ├── docs                         ## If needed, documentation   
 ├── README.md                    ## You are here
