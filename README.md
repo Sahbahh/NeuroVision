@@ -1,7 +1,7 @@
 # Regional Brain Tumor Detection Web App
 
 The aim of this project is to develop a machine-learning model, accessible through a React web application, designed to detect brain tumors from MRI scans. We focused on segmentation tasks whereby the model is able to identify the presence of a tumor and predict its shape and size (tumor mask). To achieve this, we leverage a Regional Convolutional Neural Network (RCNN) developed using U-net architecture, which is ideal for medical imaging segmentation tasks, to pinpoint the precise areas in the brain that may contain tumors.
-We decided to make the model accessible through a web application to enhance and simplify the user experience. 
+\\We decided to make the model accessible through a web application to enhance and simplify the user experience. 
 
 ## Important Links
 
