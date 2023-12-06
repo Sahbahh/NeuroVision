@@ -30,7 +30,8 @@ Our video can be found on YouTube using the following URL:
 <a name="demo"></a>
 ## 1. Example demo
 
-A minimal example to showcase your work
+![]([https://github.com/sfu-cmpt340/project_16/blob/main/brain_slices.gif](https://github.com/sfu-cmpt340/project_16/blob/main/images/brain_slices.gif))
+
 
 
 
