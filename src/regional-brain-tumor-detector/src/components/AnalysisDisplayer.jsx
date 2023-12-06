@@ -1,15 +1,16 @@
 import React from "react";
 import "./AnalysisDisplayer.css";
 
-// assets
-import sampleResultImg from '../assets/sample-result.png';
 
-export default function AnalysisDisplayer() {
+export default function AnalysisDisplayer({output}) {
     return (
         <section>
           <h2>Analysis</h2>
-          <img src={sampleResultImg} />
-          <canvas id="output"></canvas>
+          <div id="output">
+            {output.map((slice, index) => (
+              <img src={`data:image/png;base64,${slice}`} key={index} />
+            ))}
+          </div>
         </section>
     )
 }
