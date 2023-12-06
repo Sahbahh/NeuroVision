@@ -35,6 +35,8 @@ Our video can be found on YouTube using the following URL:
 
 ![alt text](https://github.com/sfu-cmpt340/project_16/blob/main/images/image.png)
 
+## Web interface
+![alt text](https://github.com/sfu-cmpt340/project_16/blob/main/images/web_interface.JPG)
 
 
 ## U-net model schematic
