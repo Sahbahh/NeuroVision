@@ -120,7 +120,7 @@ Product ID	00327-35905-98426-AAOEM
 System type	64-bit operating system, x64-based processor  
 Pen and touch	No pen or touch input is available for this display  
 
-## We have not reproduced the results on macOS
+We have not reproduced the results on macOS
 
 <a name="repro"></a>
 ## 3. Reproduction
