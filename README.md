@@ -17,6 +17,7 @@ We decided to make the model accessible through a web application to enhance and
 ## Video/demo/GIF
 Record a short video (1:40 - 2 minutes maximum) or gif or a simple screen recording or even using PowerPoint with audio or with text, showcasing your work.
 
+Our video can be found on YouTube using the following URL:
 
 ## Table of Contents
 1. [Demo](#demo)
