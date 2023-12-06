@@ -117,8 +117,7 @@ Processor	Intel(R) Core(TM) i5-9300HF CPU @ 2.40GHz   2.40 GHz
 Installed RAM	8.00 GB  
 Device ID	B002CCA2-DB2A-4413-9699-B8AF847FD080  
 Product ID	00327-35905-98426-AAOEM  
-System type	64-bit operating system, x64-based processor  
-Pen and touch	No pen or touch input is available for this display  
+System type	64-bit operating system, x64-based processor   
 
 We have not reproduced the results on macOS
 
