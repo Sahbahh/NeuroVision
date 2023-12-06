@@ -44,7 +44,7 @@ Our video can be found on YouTube using the following URL:
 
 ### What to find where
 
-Where to find out files:
+Where to find our files:
 1) Our jupyter notebook where the neural network model was trained is under src\neural network\FinalProjectmodel.ipynb our whole neural network is saved in the notebook and can be viewed for more details. Our saved model is saved in src\neural network\sample_model.h5
 2) We created a Flask server as the backend for the react front end. The Flask can be found under src\Flask\app.py this is where out model is being called in the backend.
 3) Our react app is saved in src\regional-brain-tumor-detector.
