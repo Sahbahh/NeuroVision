@@ -15,8 +15,6 @@ The aim of this project is to develop a machine-learning model, accessible throu
 
 
 ## Video/demo/GIF
-Record a short video (1:40 - 2 minutes maximum) or gif or a simple screen recording or even using PowerPoint with audio or with text, showcasing your work.
-
 Our video can be found on YouTube using the following URL:
 [Youtube video](https://youtu.be/qIr_XJFoXMQ)
 
