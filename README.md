@@ -26,8 +26,6 @@ Our video can be found on YouTube using the following URL:
 
 3. [Reproducing this project](#repro)
 
-4. [Guidance](#guide)
-
 
 <a name="demo"></a>
 ## 1. Example demo
@@ -116,16 +114,3 @@ python evaluate.py --epochs=10 --data=/in/put/dir
 Data can be found at ...
 Output will be saved in ...
 
-<a name="guide"></a>
-## 4. Guidance
-
-- Use [git](https://git-scm.com/book/en/v2)
-    - Do NOT use history re-editing (rebase)
-    - Commit messages should be informative:
-        - No: 'this should fix it', 'bump' commit messages
-        - Yes: 'Resolve invalid API call in updating X'
-    - Do NOT include IDE folders (.idea), or hidden files. Update your .gitignore where needed.
-    - Do NOT use the repository to upload data
-- Use [VSCode](https://code.visualstudio.com/) or a similarly powerful IDE
-- Use [Copilot for free](https://dev.to/twizelissa/how-to-enable-github-copilot-for-free-as-student-4kal)
-- Sign up for [GitHub Education](https://education.github.com/) 
