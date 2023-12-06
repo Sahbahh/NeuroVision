@@ -34,16 +34,15 @@ Our video can be found on YouTube using the following URL:
 
 A minimal example to showcase your work
 
-```python
-from amazing import amazingexample
-imgs = amazingexample.demo()
-for img in imgs:
-    view(img)
-```
+
 
 ### What to find where
 
-Explain briefly what files are found where
+Where to find out files:
+1) Our jupyter notebook where the neural network model was trained is under src\neural network\FinalProjectmodel.ipynb our whole neural network is saved in the notebook and can be viewed for more details. Our saved model is saved in src\neural network\sample_model.h5
+2) We created a Flask server as the backend for the react front end. The Flask can be found under src\Flask\app.py this is where out model is being called in the backend.
+3) Our react app is saved in src\regional-brain-tumor-detector.
+
 
 ```bash
 repository
@@ -61,15 +60,48 @@ repository
 
 ## 2. Installation
 
-Provide sufficient instructions to reproduce and install your project. 
-Provide _exact_ versions, test on CSIL or reference workstations.
-
-```bash
-git clone $THISREPO
-cd $THISREPO
-conda env create -f requirements.yml
-conda activate amazing
+We recommend the user to used VisualStudio Code to run our project.
+There are 2 parts of out project that the user needs to run.
+Make sure the system has python 3.7-3.9 installed.
+# STEP 1
 ```
+cd project_16/src/Flask
+```
+Once in Flask directory read the README file and run:
+```
+pip install -r requirements.txt
+``` 
+To start the Flask server run (Make sure you are in the flask directory)
+```
+flask run
+```
+
+# STEP 2
+```
+cd project_16/src/regional-brain-tumor-detector
+```
+Once in regional-brain-tumor-detector directory read the README file and run:
+To install dependencies:
+ ```
+npm install
+```
+To run development environment:
+ ```
+npm start
+```
+To build production version:
+```
+npm run build
+```
+# System specifications we ran out program on:
+CSIL workstation: ASB9700 (used machine asb9700-h07)
+OS: LINUX Ubuntu 20.04
+GPU: GeForce RTX 2080
+CPU model/make: Intel(R) Core(TM) i9-9900 CPU @ 3.10GHz
+Socket(s): 1
+Core(s) per socket: 8
+Thread(s) per core: 2
+Total memory: 31Gi
 
 <a name="repro"></a>
 ## 3. Reproduction
