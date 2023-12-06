@@ -1,7 +1,7 @@
 # Regional Brain Tumor Detection Web App
 
-The aim of this project is to develop a machine-learning model, accessible through a React web application, designed to detect brain tumors from MRI scans. We focused on segmentation tasks whereby the model is able to identify the presence of a tumor and predict its shape and size (tumor mask). To achieve this, we leverage a Regional Convolutional Neural Network (RCNN) developed using U-net architecture, which is ideal for medical imaging segmentation tasks, to pinpoint the precise areas in the brain that may contain tumors.
-\\We decided to make the model accessible through a web application to enhance and simplify the user experience. 
+The aim of this project is to develop a machine-learning model, accessible through a React web application, designed to detect brain tumors from MRI scans. We focused on segmentation tasks whereby the model is able to identify the presence of a tumor and predict its shape and size (tumor mask). To achieve this, we leverage a Regional Convolutional Neural Network (RCNN) developed using U-net architecture, which is ideal for medical imaging segmentation tasks, to pinpoint the precise areas in the brain that may contain tumors.  
+We decided to make the model accessible through a web application to enhance and simplify the user experience. 
 
 ## Important Links
 
@@ -103,47 +103,47 @@ To build production version:
 npm run build
 ```
 ### System specifications we ran out program on:
-CSIL workstation: ASB9700 (used machine asb9700-h07)
-OS: LINUX Ubuntu 20.04
-GPU: GeForce RTX 2080
-CPU model/make: Intel(R) Core(TM) i9-9900 CPU @ 3.10GHz
-Socket(s): 1
-Core(s) per socket: 8
-Thread(s) per core: 2
-Total memory: 31Gi
+CSIL workstation: ASB9700 (used machine asb9700-h07)  
+OS: LINUX Ubuntu 20.04  
+GPU: GeForce RTX 2080  
+CPU model/make: Intel(R) Core(TM) i9-9900 CPU @ 3.10GHz  
+Socket(s): 1  
+Core(s) per socket: 8  
+Thread(s) per core: 2  
+Total memory: 31Gi  
 
-### Windows system specifications we ran out program on:
-Device name	LAPTOP-9MHQ0U9R
-Processor	Intel(R) Core(TM) i5-9300HF CPU @ 2.40GHz   2.40 GHz
-Installed RAM	8.00 GB
-Device ID	B002CCA2-DB2A-4413-9699-B8AF847FD080
-Product ID	00327-35905-98426-AAOEM
-System type	64-bit operating system, x64-based processor
-Pen and touch	No pen or touch input is available for this display
+### Windows system specifications we ran out program on:  
+Processor	Intel(R) Core(TM) i5-9300HF CPU @ 2.40GHz   2.40 GHz  
+Installed RAM	8.00 GB  
+Device ID	B002CCA2-DB2A-4413-9699-B8AF847FD080  
+Product ID	00327-35905-98426-AAOEM  
+System type	64-bit operating system, x64-based processor  
+Pen and touch	No pen or touch input is available for this display  
 
+## We have not reproduced the results on macOS
 
 <a name="repro"></a>
 ## 3. Reproduction
 
-These are the requirment to run the jupyter notebook. And reproduct the results in the jupyter notebook.
+These are the requirements to run the jupyter notebook. And reproduce the results in the jupyter notebook.
 
-Python 3.7 - 3.9 (recomended)
+Python 3.7 - 3.9 (recommended)
 
 Libraries:
-OpenCV
-PIL
-NumPy
-Pandas
-Seaborn
-Matplotlib
-scikit-image
-TensorFlow (including Keras)
-Scikit-learn
-Nilearn
-imageio
+OpenCV,
+PIL,
+NumPy,
+Pandas,
+Seaborn,
+Matplotlib,
+scikit-image,
+TensorFlow (including Keras),
+Scikit-learn,
+Nilearn,
+imageio,  
 Hardware: GPU (recommended for faster processing)
 
-Installation
+Installation  
 First, ensure you have Python 3.x installed. Then, install the required libraries using pip:
 ```
 pip install opencv-python
