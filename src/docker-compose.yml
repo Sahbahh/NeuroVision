@@ -1,7 +1,0 @@
-version: '3.9'
-services:
-  server:
-    container_name: flask-server
-    build: ./testing-docker-flask
-    ports:
-      - '5000:5000'
