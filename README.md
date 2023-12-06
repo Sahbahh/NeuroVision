@@ -91,7 +91,7 @@ To build production version:
 ```
 npm run build
 ```
-# System specifications we ran out program on:
+### System specifications we ran out program on:
 CSIL workstation: ASB9700 (used machine asb9700-h07)
 OS: LINUX Ubuntu 20.04
 GPU: GeForce RTX 2080
@@ -100,6 +100,16 @@ Socket(s): 1
 Core(s) per socket: 8
 Thread(s) per core: 2
 Total memory: 31Gi
+
+### Windows system specifications we ran out program on:
+Device name	LAPTOP-9MHQ0U9R
+Processor	Intel(R) Core(TM) i5-9300HF CPU @ 2.40GHz   2.40 GHz
+Installed RAM	8.00 GB
+Device ID	B002CCA2-DB2A-4413-9699-B8AF847FD080
+Product ID	00327-35905-98426-AAOEM
+System type	64-bit operating system, x64-based processor
+Pen and touch	No pen or touch input is available for this display
+
 
 <a name="repro"></a>
 ## 3. Reproduction
