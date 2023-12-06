@@ -40,9 +40,10 @@ Our video can be found on YouTube using the following URL:
 
 
 ## U-net model schematic
-
 ![alt text](https://github.com/sfu-cmpt340/project_16/blob/main/images/model_schematic.png)
 
+## Web App Architecture
+![alt text](https://github.com/sfu-cmpt340/project_16/blob/main/images/Web_App_Architecture.png)
 
 
 
@@ -104,7 +105,7 @@ To build production version:
 ```
 npm run build
 ```
-### System specifications we ran out program on:
+### System specifications we ran our program on:
 CSIL workstation: ASB9700 (used machine asb9700-h07)  
 OS: LINUX Ubuntu 20.04  
 GPU: GeForce RTX 2080  
@@ -114,7 +115,7 @@ Core(s) per socket: 8
 Thread(s) per core: 2  
 Total memory: 31Gi  
 
-### Windows system specifications we ran out program on:  
+### Windows system specifications we ran our program on:  
 Processor	Intel(R) Core(TM) i5-9300HF CPU @ 2.40GHz   2.40 GHz  
 Installed RAM	8.00 GB  
 Device ID	B002CCA2-DB2A-4413-9699-B8AF847FD080  
