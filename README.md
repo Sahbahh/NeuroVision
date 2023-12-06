@@ -1,8 +1,7 @@
 # Regional Brain Tumor Detection Web App
-This repository is a template for your CMPT 340 course project.
-Replace the title with your project title, and **add a snappy acronym that people remember (mnemonic)**.
 
-The aim of this project is to develop a web application designed to detect brain tumors from MRI scans. Initially, we will focus on binary classification, distinguishing between the presence and absence of tumors. However, our long-term goal is to extend the application's capabilities to identify various types of brain tumors. To achieve this, we will leverage a Regional Convolutional Neural Network (RCNN) to pinpoint the precise areas in the brain that may contain tumors.
+The aim of this project is to develop a machine-learning model, accessible through a React web application, designed to detect brain tumors from MRI scans. We focused on segmentation tasks whereby the model is able to identify the presence of a tumor and predict its shape and size (tumor mask). To achieve this, we leverage a Regional Convolutional Neural Network (RCNN) developed using U-net architecture, which is ideal for medical imaging segmentation tasks, to pinpoint the precise areas in the brain that may contain tumors.
+We decided to make the model accessible through a web application to enhance and simplify the user experience. 
 
 ## Important Links
 
