@@ -61,7 +61,7 @@ repository
 We recommend the user to used VisualStudio Code to run our project.
 There are 2 parts of out project that the user needs to run.
 Make sure the system has python 3.7-3.9 installed.
-# STEP 1
+### STEP 1
 ```
 cd project_16/src/Flask
 ```
@@ -74,7 +74,7 @@ To start the Flask server run (Make sure you are in the flask directory)
 flask run
 ```
 
-# STEP 2
+### STEP 2
 ```
 cd project_16/src/regional-brain-tumor-detector
 ```
